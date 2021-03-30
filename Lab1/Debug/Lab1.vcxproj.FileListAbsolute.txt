@@ -1,0 +1,3 @@
+C:\Users\hispe\source\repos\4 sem aisd\Lab1\Debug\Lab1.exe
+C:\Users\hispe\source\repos\4 sem aisd\Lab1\Debug\Lab1.pdb
+C:\Users\hispe\Workspace\C++\4 sem aisd\Lab1\Debug\Lab1.exe
