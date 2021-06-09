@@ -6,7 +6,7 @@ remove and find a node. Balance is achieved through the introduction of an addit
 of the tree node - "colors". This attribute can take one of two possible values - "black" or "red".
 */
 #include <iostream>
-#include <list>
+#include "List.h"
 
 using namespace std;
 
@@ -59,13 +59,13 @@ public:
 
     void clear(); // clearing an associative array
 
-    list<T> get_keys(); // returns a list of keys
+    List<T> get_keys(); // returns a list of keys
 
-    void get_next_key(list<T> *, Node<T> *);
+    void get_next_key(List<T> *, Node<T> *);
 
-    list<T> get_values(); // returns a list of values
+    List<T> get_values(); // returns a list of values
 
-    void get_next_value(list<T> *, Node<T> *);
+    void get_next_value(List<T> *, Node<T> *);
 
     void print(Node<T> *current = nullptr);
 };
@@ -405,8 +405,8 @@ void RB_Tree<T>::clear() {
 
 // returns a list of keys
 template<typename T>
-list<T> RB_Tree<T>::get_keys() {
-    list<T> keys;
+List<T> RB_Tree<T>::get_keys() {
+    List<T> keys;
     Node<T> *current = root;
     get_next_key(&keys, current);
     return keys;
@@ -414,7 +414,7 @@ list<T> RB_Tree<T>::get_keys() {
 
 // using recursion to collect an array of keys
 template<typename T>
-void RB_Tree<T>::get_next_key(list<T> *keys, Node<T> *current) {
+void RB_Tree<T>::get_next_key(List<T> *keys, Node<T> *current) {
     if (current != nil) {
         keys->push_back(current->key);
         get_next_key(&*keys, current->leftChild);
@@ -424,8 +424,8 @@ void RB_Tree<T>::get_next_key(list<T> *keys, Node<T> *current) {
 
 // returns a list of values
 template<typename T>
-list<T> RB_Tree<T>::get_values() {
-    list<T> values;
+List<T> RB_Tree<T>::get_values() {
+    List<T> values;
     Node<T> *current = root;
     get_next_value(&values, current);
     return values;
@@ -433,7 +433,7 @@ list<T> RB_Tree<T>::get_values() {
 
 // using recursion to collect an array of values
 template<typename T>
-void RB_Tree<T>::get_next_value(list<T> *values, Node<T> *current) {
+void RB_Tree<T>::get_next_value(List<T> *values, Node<T> *current) {
     if (current != nil) {
         values->push_back(current->value);
         get_next_value(&*values, current->leftChild);

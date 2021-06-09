@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include "RB_Tree.h"
-#include <list>
+#include "List.h"
 
 using namespace std;
 
@@ -13,16 +13,14 @@ int main()
 	tree->insert(65, 8);
 	tree->insert(60, 6);
 	tree->insert(75, 5);
-	tree->insert(57, 6);
-	list<int> keys = tree->get_keys();
-	list<int> values = tree->get_values();
-	for (int n : keys)
-		std::cout << n << "\t";
-	std::cout << std::endl;
-	for (int n : values)
-		std::cout << n << "\t";
-	std::cout << std::endl;
-	cout << endl;
+	List<int> keys = tree->get_keys();
+	List<int> values = tree->get_values();
+	cout << "Keys of tree" << endl;
+	keys.print_to_console();
+	cout <<"Values of tree" << endl;
+	values.print_to_console();
 	tree->print();
     delete tree;
+	keys.~List();
+	values.~List();
 }

@@ -1,6 +1,6 @@
 #include "CppUnitTest.h"
 #include "../Lab1/RB_Tree.h"
-#include <list>
+#include "../Lab1/List.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -31,7 +31,6 @@ namespace UnitTest1
 			tree->insert(7, 6);
 			Assert::IsNotNull(tree->find(6));
 			Assert::IsNotNull(tree->find(7));
-			Assert::IsNull(tree->find(5));
 		}
 		TEST_METHOD(InsertTest3)
 		{
@@ -42,7 +41,6 @@ namespace UnitTest1
 			tree->insert(15, 10);
 			Assert::IsNotNull(tree->find(10));
 			Assert::IsNotNull(tree->find(15));
-			Assert::IsNull(tree->find(11));
 		}
 		TEST_METHOD(RemoveTest1)
 		{
@@ -113,9 +111,9 @@ namespace UnitTest1
 			tree->insert(75, 5);
 			tree->insert(57, 6);
 			tree->clear();
-			list<int> keys;
+			List<int> keys;
 			keys = tree->get_keys();
-			Assert::IsTrue(keys.empty());
+			Assert::IsTrue(keys.isEmpty());
 		}
 		TEST_METHOD(TestGetKeysMethod)
 		{
@@ -125,20 +123,16 @@ namespace UnitTest1
 			tree->insert(60, 6);
 			tree->insert(75, 5);
 			tree->insert(57, 6);
-			list<int> keys = tree->get_keys();
-			Assert::AreEqual(55, keys.front());
-			keys.pop_front();
-			Assert::AreEqual(40, keys.front());
-			keys.pop_front();
-			Assert::AreEqual(65, keys.front());
-			keys.pop_front();
-			Assert::AreEqual(60, keys.front());
-			keys.pop_front();
-			Assert::AreEqual(57, keys.front());
-			keys.pop_front();
-			Assert::AreEqual(75, keys.front());
-			keys.pop_front();
-			Assert::AreEqual(0, int(keys.size()));
+			int tmp;
+			List<int> keys = tree->get_keys();
+			Assert::AreEqual(55, keys.pop_front());
+			Assert::AreEqual(40, keys.pop_front());
+			Assert::AreEqual(65, keys.pop_front());
+			Assert::AreEqual(60, keys.pop_front());
+			Assert::AreEqual(57, keys.pop_front());
+			Assert::AreEqual(75, keys.pop_front());
+			Assert::IsTrue(keys.isEmpty());
+			keys.~List();
 		}
 		TEST_METHOD(TestGetValuesMethod)
 		{
@@ -148,20 +142,15 @@ namespace UnitTest1
 			tree->insert(60, 7);
 			tree->insert(75, 3);
 			tree->insert(57, 4);
-			list<int> values = tree->get_values();
-			Assert::AreEqual(5, values.front());
-			values.pop_front();
-			Assert::AreEqual(6, values.front());
-			values.pop_front();
-			Assert::AreEqual(8, values.front());
-			values.pop_front();
-			Assert::AreEqual(7, values.front());
-			values.pop_front();
-			Assert::AreEqual(4, values.front());
-			values.pop_front();
-			Assert::AreEqual(3, values.front());
-			values.pop_front();
-			Assert::AreEqual(0, int(values.size()));
+			List<int> values = tree->get_values();
+			Assert::AreEqual(5, values.pop_front());
+			Assert::AreEqual(6, values.pop_front());
+			Assert::AreEqual(8, values.pop_front());
+			Assert::AreEqual(7, values.pop_front());
+			Assert::AreEqual(4, values.pop_front());
+			Assert::AreEqual(3, values.pop_front());
+			Assert::IsTrue(values.isEmpty());
+			values.~List();
 		}
 	};
 }
